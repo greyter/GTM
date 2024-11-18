@@ -1,0 +1,102 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2024-11-18 09:30:24",
+    "containerVersion": {
+        "path": "accounts/6002062762/containers/32488478/versions/0",
+        "accountId": "6002062762",
+        "containerId": "32488478",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/6002062762/containers/32488478",
+            "accountId": "6002062762",
+            "containerId": "32488478",
+            "name": "brinks.lu",
+            "publicId": "GTM-N3LXQJG",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1653653316035",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6002062762/containers/32488478/workspaces?apiLink=container",
+            "features": {
+                "supportUserPermissions": true,
+                "supportEnvironments": true,
+                "supportWorkspaces": true,
+                "supportGtagConfigs": false,
+                "supportBuiltInVariables": true,
+                "supportClients": false,
+                "supportFolders": true,
+                "supportTags": true,
+                "supportTemplates": true,
+                "supportTriggers": true,
+                "supportVariables": true,
+                "supportVersions": true,
+                "supportZones": true,
+                "supportTransformations": false
+            },
+            "tagIds": [
+                "GTM-N3LXQJG"
+            ]
+        },
+        "tag": [
+            {
+                "accountId": "6002062762",
+                "containerId": "32488478",
+                "tagId": "129",
+                "name": "99. url params - get tracking parameter",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n// https://jsfiddle.net/uknjpbz3/\n  \n//var urlString = \"https://www.example.com/path/to/page?gclid=123#section\";\n//var url = new URL(urlString);\nvar url = window.location;\n\n// Objet de configuration pour les paramètres et leurs valeurs autorisées\nvar config = {\n    parameters: {\n        utm_medium: ['cpc', 'paid'],\n        utm_source: ['google', 'facebook'],\n        gclid: [],       // Pas de restriction, accepter toutes les valeurs\n        wbraid: [],\n        gbraid: []\n    }\n};\n\n// Fonction pour obtenir les paramètres de l'URL\nfunction getURLParams(config) {\n    // Récupère les paramètres à partir de l'URL\n    var params = url.search.substring(1).split('&');\n    var paramObj = {};\n\n    // Parcours des paramètres dans l'URL\n    for (var i = 0; i < params.length; i++) {\n        var paramPair = params[i].split('=');\n\n        // Convertir le nom et la valeur du paramètre en minuscules\n        var paramName = paramPair[0] ? paramPair[0].toLowerCase() : '';\n        var paramValue = paramPair[1] ? paramPair[1].toLowerCase() : '';\n\n        // Vérifie si le paramètre est défini dans la configuration\n        if (config.parameters.hasOwnProperty(paramName)) {\n            var allowedValues = config.parameters[paramName];\n\n            // Vérifie si une valeur spécifique est requise\n            if (allowedValues.length > 0 && allowedValues.indexOf(paramValue) === -1) {\n                continue; // Ignore si la valeur ne correspond pas à la configuration\n            }\n            // Ajoute le paramètre à l'objet si valide\n            paramObj[paramName] = paramValue;\n        }\n    }\n\n    return paramObj;\n}\n\n// Fonction pour stocker l'objet dans le local storage\nfunction storeParamsInLocalStorage(paramObj) {\n    // Ne rien faire si aucun paramètre valide\n    if (Object.keys(paramObj).length === 0) return;\n\n    // Récupère l'objet existant du local storage s'il existe\n    var existingParams = localStorage.getItem('urlParams');\n    existingParams = existingParams ? JSON.parse(existingParams) : {};\n\n    // Met à jour l'objet existant avec les nouveaux paramètres\n    for (var key in paramObj) {\n        if (paramObj.hasOwnProperty(key)) {\n            existingParams[key] = paramObj[key];\n        }\n    }\n\n    // Stocke l'objet mis à jour dans le local storage\n    localStorage.setItem('urlParams', JSON.stringify(existingParams));\n    //console.log(localStorage.getItem('urlParams'))\n}\n\n// Exécution\nvar urlParams = getURLParams(config);\nstoreParamsInLocalStorage(urlParams);\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1731921529514",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_NEEDED"
+                }
+            },
+            {
+                "accountId": "6002062762",
+                "containerId": "32488478",
+                "tagId": "130",
+                "name": "99. url params - erase",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>localStorage.removeItem(\"urlParams\");</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1731922163700",
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_NEEDED"
+                }
+            }
+        ],
+        "fingerprint": "1731922224502",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6002062762/containers/32488478/versions/0?apiLink=version"
+    }
+}
